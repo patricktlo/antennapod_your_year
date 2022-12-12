@@ -13,7 +13,7 @@ export default function DatabaseReader({ setDb }: Props) {
 
     const r = new FileReader();
     r.onload = function () {
-      const uInts = new Uint8Array(r.result);
+      const uInts = new Uint8Array(r.result as ArrayBuffer);
 
       initSqlJs({
         locateFile: (file: string) => `https://sql.js.org/dist/${file}`,
@@ -23,7 +23,7 @@ export default function DatabaseReader({ setDb }: Props) {
     };
 
     r.readAsArrayBuffer(file);
-  }, [file]);
+  }, [file, setDb]);
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
