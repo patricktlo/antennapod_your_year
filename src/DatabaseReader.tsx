@@ -2,22 +2,14 @@ import { ChangeEvent, useEffect, useState } from "react";
 import initSqlJs, { Database } from "sql.js";
 
 type Props = {
-  setFile: (a: File) => void;
+  setDb: (a: Database) => void;
 };
 
-export default function DatabaseReader({ setFile }: Props) {
-  const [Db, setDb] = useState<Database>();
+export default function DatabaseReader({ setDb }: Props) {
+  const [file, setFile] = useState<File>();
 
-  // useEffect(() => {
-  //   initSqlJs({
-  //     locateFile: (file: string) => `https://sql.js.org/dist/${file}`,
-  //   }).then((SQL) => setDb(new SQL.Database()));
-  // }, []);
-
-  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFile(e.target.files[0]);
-    }
+  useEffect(() => {
+    if (!file) return;
 
     const r = new FileReader();
     r.onload = function () {
@@ -29,16 +21,15 @@ export default function DatabaseReader({ setFile }: Props) {
         setDb(new SQL.Database(uInts));
       });
     };
-    r.readAsArrayBuffer(e.target.files[0]);
-  };
 
-  if (Db) {
-    // console.log(Db);
-    const stmt = Db.prepare("SELECT * FROM FeedMedia;");
-    stmt.step();
-    stmt.step();
-    console.log(stmt.getAsObject());
-  }
+    r.readAsArrayBuffer(file);
+  }, [file]);
+
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setFile(e.target.files[0]);
+    }
+  };
 
   return (
     <>
