@@ -6,14 +6,17 @@ import TopFivePodcasts from "../src/components/TopFivePodcasts";
 import TotalPlaytime from "../src/components/TotalPlaytime";
 import TopMonths from "../src/components/TopMonths";
 import TopDaysOfWeek from "../src/components/TopDaysofWeek";
+import UseDemoDatabase from "../src/components/UseDemoDatabase";
 
 export default function Home() {
   const [db, setDb] = useState<Database>();
 
   if (!db) {
     return (
-      <div>
+      <div className={styles.landing}>
         <DatabaseReader setDb={setDb} />
+        <h1>Or</h1>
+        <UseDemoDatabase setDb={setDb} />
       </div>
     );
   }

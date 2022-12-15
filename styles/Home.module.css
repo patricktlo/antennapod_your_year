@@ -1,10 +1,33 @@
-.topfive {
+.center {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.topfive h2 {
+.center h2 {
   font-size: 1.2em;
+}
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing input[type=file], .landing button{
+  display: none;
+}
+
+.landing label {
+  padding: 20px 10px;
+  width: 200px;
+  background-color: rgb(122, 5, 255);
+  color: #FFF;
+  text-align: center;
+  display: block;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 50px;
 }
