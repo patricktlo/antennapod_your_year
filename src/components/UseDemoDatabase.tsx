@@ -6,33 +6,30 @@ type Props = {
 };
 
 export default function UseDemoDatabase({ setDb }: Props) {
-  const [file, setFile] = useState<File>();
+  const [file, setFile] = useState<ArrayBuffer>();
 
   useEffect(() => {
     if (!file) return;
 
-    const r = new FileReader();
-    r.onload = function () {
-      const uInts = new Uint8Array(r.result as ArrayBuffer);
-
-      initSqlJs({
-        locateFile: (file: string) => `https://sql.js.org/dist/${file}`,
-      }).then((SQL) => {
-        setDb(new SQL.Database(uInts));
-      });
-    };
-
-    r.readAsArrayBuffer(file);
+    initSqlJs({
+      locateFile: (file: string) => `https://sql.js.org/dist/${file}`,
+    }).then((SQL) => {
+      setDb(new SQL.Database(new Uint8Array(file)));
+    });
   }, [file, setDb]);
 
-  // const handleFileSelect = (e) => {
-  //   // setFile();
-  // };
+  const handleFileSelect = async () => {
+    const data = await fetch("./data/demodb.db");
+
+    data.arrayBuffer().then((arrayBuffer) => {
+      setFile(arrayBuffer);
+    });
+  };
 
   return (
     <>
-      <label htmlFor="dbUpload">Use demo database</label>
-      {/* <button id="dbUpload" name="dbUpload" onClick={handleFileSelect} /> */}
+      <label htmlFor="dbDemo">Use demo database</label>
+      <button id="dbDemo" name="dbDemo" onClick={handleFileSelect} />
     </>
   );
 }
