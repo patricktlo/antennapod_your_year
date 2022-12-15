@@ -37,7 +37,7 @@ export default function TopMonths({ db }: Props) {
   });
 
   return (
-    <div className={styles.topfive}>
+    <div className={styles.center}>
       <h1>Top months by activity</h1>
       <table>
         <thead>

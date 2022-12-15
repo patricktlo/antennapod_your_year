@@ -24,7 +24,7 @@ export default function TopFivePodcasts({ db }: Props) {
   }
 
   return (
-    <div className={styles.topfive}>
+    <div className={styles.center}>
       <h1>Your top 5 podcasts this year</h1>
       <table>
         <thead>

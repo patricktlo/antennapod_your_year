@@ -49,7 +49,7 @@ export default function TopDaysOfWeek({ db }: Props) {
   }
 
   return (
-    <div className={styles.topfive}>
+    <div className={styles.center}>
       <h1>Top weekdays</h1>
       <table>
         <thead>
