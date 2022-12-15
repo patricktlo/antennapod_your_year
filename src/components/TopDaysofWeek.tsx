@@ -40,10 +40,11 @@ export default function TopDaysOfWeek({ db }: Props) {
 
       const [dayStart, dayEnd] = getStartAndEndOfDay(2022, month, day);
 
-      daysOfWeek[dayStart.getDay()] += stmt.getAsObject({
-        $start: dayStart.getTime(),
-        $end: dayEnd.getTime(),
-      }).playtime as unknown as number;
+      daysOfWeek[dayStart.getDay() as keyof typeof daysOfWeek] +=
+        stmt.getAsObject({
+          $start: dayStart.getTime(),
+          $end: dayEnd.getTime(),
+        }).playtime as unknown as number;
     }
   }
 
@@ -60,7 +61,13 @@ export default function TopDaysOfWeek({ db }: Props) {
         <tbody>
           {Object.entries(daysOfWeek).map(([day, playtime]) => (
             <tr key={day}>
-              <th>{dayOfWeekToLabel[day]}</th>
+              <th>
+                {
+                  dayOfWeekToLabel[
+                    day as unknown as keyof typeof dayOfWeekToLabel
+                  ]
+                }
+              </th>
               <th>{(playtime / 3600).toFixed(0)}</th>
             </tr>
           ))}

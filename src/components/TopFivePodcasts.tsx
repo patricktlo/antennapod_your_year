@@ -35,7 +35,7 @@ export default function TopFivePodcasts({ db }: Props) {
         </thead>
         <tbody>
           {topFive.map(({ title, playtime, id }) => (
-            <tr key={title}>
+            <tr key={title as string}>
               <th>{title}</th>
               <th>{playtime}</th>
             </tr>

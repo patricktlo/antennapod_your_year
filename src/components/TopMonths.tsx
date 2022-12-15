@@ -30,8 +30,10 @@ export default function TopMonths({ db }: Props) {
   `);
 
   Object.entries(months).forEach(([month, sum], index) => {
-    months[month] = stmt.getAsObject(getStartAndEndOfMonth(index + 1))
-      .playtime as number;
+    // months[month as unknown as typeof months] = stmt.getAsObject(
+    months[month as keyof typeof months] = stmt.getAsObject(
+      getStartAndEndOfMonth(index + 1)
+    ).playtime as number;
   });
 
   return (
