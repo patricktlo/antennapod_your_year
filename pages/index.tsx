@@ -5,6 +5,7 @@ import { Database } from "sql.js";
 import TopFivePodcasts from "../src/components/TopFivePodcasts";
 import TotalPlaytime from "../src/components/TotalPlaytime";
 import TopMonths from "../src/components/TopMonths";
+import TopDaysOfWeek from "../src/components/TopDaysofWeek";
 
 export default function Home() {
   const [db, setDb] = useState<Database>();
@@ -22,6 +23,7 @@ export default function Home() {
       <TotalPlaytime db={db} />
       <TopFivePodcasts db={db} />
       <TopMonths db={db} />
+      <TopDaysOfWeek db={db} />
     </>
   );
 }
