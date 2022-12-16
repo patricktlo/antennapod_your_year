@@ -1,4 +1,4 @@
-import styles from "../../styles/Home.module.css";
+import styles from "../../styles/Stats.module.css";
 import { Database } from "sql.js";
 
 type Props = {

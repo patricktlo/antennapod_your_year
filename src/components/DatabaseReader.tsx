@@ -33,7 +33,7 @@ export default function DatabaseReader({ setDb }: Props) {
 
   return (
     <>
-      <label htmlFor="dbUpload">Put db file here</label>
+      <label htmlFor="dbUpload">Upload database</label>
       <input
         type="file"
         id="dbUpload"

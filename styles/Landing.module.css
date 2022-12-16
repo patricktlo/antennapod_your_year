@@ -1,0 +1,63 @@
+.landing {
+  height: 100vh; 
+  padding: 3em;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+
+  color: var(--primary)
+}
+
+.selectDb {
+  display: flex;
+  gap: 15px;
+}
+
+.landing footer {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.landing input[type=file], .landing button{
+  display: none;
+}
+
+.landing label, .howto button {
+  padding: 20px 10px;
+  width: 200px;
+  color: var(--primary);
+  background-color: #FFF;
+  text-align: center;
+  border: 1px var(--primary) solid;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.landing label:hover{
+  color: #FFF;
+  background-color: var(--primary);
+}
+
+.howto {
+  box-sizing: border-box;
+  height: 100vh;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.howto p {
+  line-height: 2em;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--primary)
+}
