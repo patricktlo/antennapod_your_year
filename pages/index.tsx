@@ -8,6 +8,7 @@ import TopMonths from "../src/components/TopMonths";
 import TopDaysOfWeek from "../src/components/TopDaysofWeek";
 import UseDemoDatabase from "../src/components/UseDemoDatabase";
 import Link from "next/link";
+import StatCards from "../src/components/StatCards";
 
 export default function Home() {
   const [db, setDb] = useState<Database>();
@@ -31,10 +32,10 @@ export default function Home() {
 
   return (
     <>
-      <TotalPlaytime db={db} />
-      <TopFivePodcasts db={db} />
-      <TopMonths db={db} />
-      <TopDaysOfWeek db={db} />
+      <StatCards
+        stats={[TotalPlaytime, TopFivePodcasts, TopMonths, TopDaysOfWeek]}
+        db={db}
+      />
     </>
   );
 }
