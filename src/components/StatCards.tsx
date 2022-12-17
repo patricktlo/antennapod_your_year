@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Database } from "sql.js";
+import styles from "../../styles/Stats.module.css";
 
 type StatProps = {
   db: Database;
@@ -10,16 +11,17 @@ type Props = {
   db: Database;
 };
 
-// type StatComponent = {
-//     ({ db }: {db: Database}) => Element
-// }
-
 export default function StatCards({ stats, db }: Props) {
+  const [statIndex, setStatIndex] = useState(0);
+
+  const SelectedStat = stats[statIndex];
+
   return (
-    <>
-      {stats.map((Component, index) => (
-        <Component db={db} key={index} />
-      ))}
-    </>
+    <div className={styles.cardBackground}>
+      <div className={styles.card}>
+        <SelectedStat db={db} />
+      </div>
+      {/* Insert little dots here to change slider */}
+    </div>
   );
 }

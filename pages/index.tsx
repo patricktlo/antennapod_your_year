@@ -31,11 +31,9 @@ export default function Home() {
   }
 
   return (
-    <>
-      <StatCards
-        stats={[TotalPlaytime, TopFivePodcasts, TopMonths, TopDaysOfWeek]}
-        db={db}
-      />
-    </>
+    <StatCards
+      stats={[TotalPlaytime, TopFivePodcasts, TopMonths, TopDaysOfWeek]}
+      db={db}
+    />
   );
 }
