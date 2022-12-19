@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Database } from "sql.js";
 import styles from "../../styles/Stats.module.css";
+import Circle from "./Circle";
 
 type StatProps = {
   db: Database;
@@ -14,6 +15,16 @@ type Props = {
 export default function StatCards({ stats, db }: Props) {
   const [statIndex, setStatIndex] = useState(0);
 
+  const nextStat = () => {
+    if (statIndex === stats.length - 1) setStatIndex(0);
+    else setStatIndex(statIndex + 1);
+  };
+
+  const previousStat = () => {
+    if (statIndex === 0) setStatIndex(stats.length - 1);
+    else setStatIndex(statIndex - 1);
+  };
+
   const SelectedStat = stats[statIndex];
 
   return (
@@ -21,7 +32,14 @@ export default function StatCards({ stats, db }: Props) {
       <div className={styles.card}>
         <SelectedStat db={db} />
       </div>
-      {/* Insert little dots here to change slider */}
+      <div className={styles.slider}>
+        <button onClick={previousStat}>&lt;</button>
+        {stats.map((stat, index) => {
+          if (stat === stats[statIndex]) return <Circle color="black" />;
+          return <Circle color="white" key={index} />;
+        })}
+        <button onClick={nextStat}>&gt;</button>
+      </div>
     </div>
   );
 }
