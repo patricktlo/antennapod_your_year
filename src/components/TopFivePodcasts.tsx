@@ -24,24 +24,26 @@ export default function TopFivePodcasts({ db }: Props) {
   }
 
   return (
-    <div className={styles.center}>
+    <>
       <h1>Your top 5 podcasts this year</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Playtime (hours)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {topFive.map(({ title, playtime, id }) => (
-            <tr key={title as string}>
-              <th>{title}</th>
-              <th>{playtime}</th>
+      <div className={styles.cardBody}>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Playtime (hours)</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {topFive.map(({ title, playtime, id }) => (
+              <tr key={title as string}>
+                <td>{title}</td>
+                <td>{playtime}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }

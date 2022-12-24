@@ -9,3 +9,7 @@ body {
 :root {
   --primary: #1893f7;
 }
+
+table td {
+  text-align: center;
+}

@@ -23,8 +23,6 @@ export default function Home() {
         </div>
         <footer>
           <Link href="/howto">How to use</Link>
-          <span>|</span>
-          <Link href="/motivation">Motivation</Link>
         </footer>
       </div>
     );

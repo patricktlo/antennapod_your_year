@@ -19,13 +19,15 @@ export default function TotalPlaytime({ db }: Props) {
   const totalTime = stmt.getAsObject().playtime as number;
 
   return (
-    <div className={styles.center}>
+    <>
       <h1>Total listening time</h1>
-      <h2>In 2022, you listened to podcasts for {totalTime} hours!</h2>
-      <p>
-        If you were riding a bike the entire time at 20 km/h, you would&apos;ve
-        ridden for {totalTime * 20} km!
-      </p>
-    </div>
+      <div className={styles.cardBody}>
+        <h2>In 2022, you listened to podcasts for {totalTime} hours!</h2>
+        <p>
+          If you were riding a bike the entire time at 20 km/h, you
+          would&apos;ve ridden for {totalTime * 20} km!
+        </p>
+      </div>
+    </>
   );
 }

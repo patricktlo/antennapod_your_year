@@ -37,25 +37,27 @@ export default function TopMonths({ db }: Props) {
   });
 
   return (
-    <div className={styles.center}>
+    <>
       <h1>Top months by activity</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Month</th>
-            <th>Playtime (hours)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.entries(months).map(([month, playtime]) => (
-            <tr key={month}>
-              <th>{month}</th>
-              <th>{playtime}</th>
+      <div className={styles.cardBody}>
+        <table>
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Playtime (hours)</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {Object.entries(months).map(([month, playtime]) => (
+              <tr key={month}>
+                <td>{month}</td>
+                <td>{playtime}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }
 

@@ -34,10 +34,12 @@ export default function StatCards({ stats, db }: Props) {
       </div>
       <div className={styles.slider}>
         <button onClick={previousStat}>&lt;</button>
+        <span> </span>
         {stats.map((stat, index) => {
-          if (stat === stats[statIndex]) return <Circle color="black" />;
+          if (stat === stats[statIndex]) return <Circle color="#1893f7" />;
           return <Circle color="white" key={index} />;
         })}
+        <span> </span>
         <button onClick={nextStat}>&gt;</button>
       </div>
     </div>

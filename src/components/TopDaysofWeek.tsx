@@ -49,31 +49,33 @@ export default function TopDaysOfWeek({ db }: Props) {
   }
 
   return (
-    <div className={styles.center}>
+    <>
       <h1>Top weekdays</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Day of the week</th>
-            <th>Playtime (hours)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.entries(daysOfWeek).map(([day, playtime]) => (
-            <tr key={day}>
-              <th>
-                {
-                  dayOfWeekToLabel[
-                    day as unknown as keyof typeof dayOfWeekToLabel
-                  ]
-                }
-              </th>
-              <th>{(playtime / 3600).toFixed(0)}</th>
+      <div className={styles.cardBody}>
+        <table>
+          <thead>
+            <tr>
+              <th>Day of the week</th>
+              <th>Playtime (hours)</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {Object.entries(daysOfWeek).map(([day, playtime]) => (
+              <tr key={day}>
+                <td>
+                  {
+                    dayOfWeekToLabel[
+                      day as unknown as keyof typeof dayOfWeekToLabel
+                    ]
+                  }
+                </td>
+                <td>{(playtime / 3600).toFixed(0)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }
 
