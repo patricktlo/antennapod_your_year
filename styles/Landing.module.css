@@ -12,6 +12,10 @@
   color: var(--primary)
 }
 
+.landing h1 {
+  text-align: center;
+}
+
 .selectDb {
   display: flex;
   gap: 15px;
@@ -60,4 +64,8 @@
 .link {
   text-decoration: none;
   color: var(--primary)
+}
+
+@media screen {
+  
 }

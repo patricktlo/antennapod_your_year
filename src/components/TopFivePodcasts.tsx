@@ -12,13 +12,16 @@ export default function TopFivePodcasts({ db }: Props) {
     ON FeedMedia.feeditem = FeedItems.id
     INNER JOIN Feeds
     ON FeedItems.feed = Feeds.id
-    WHERE last_played_time > $start
+    WHERE last_played_time BETWEEN $start and $end
     GROUP BY FeedItems.feed
     ORDER BY SUM(played_duration) DESC
     LIMIT 5
 `);
+  stmt.bind({
+    $start: new Date("2022-01-01T00:00:00").getTime(),
+    $end: new Date("2023-01-01T00:00:00").getTime(),
+  });
 
-  stmt.bind({ $start: new Date("2022-01-01T00:00:00").getTime() });
   while (stmt.step()) {
     topFive.push(stmt.getAsObject());
   }
