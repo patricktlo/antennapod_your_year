@@ -36,7 +36,8 @@ export default function StatCards({ stats, db }: Props) {
         <button onClick={previousStat}>&lt;</button>
         <span> </span>
         {stats.map((stat, index) => {
-          if (stat === stats[statIndex]) return <Circle color="#1893f7" />;
+          if (stat === stats[statIndex])
+            return <Circle color="#1893f7" key={index} />;
           return <Circle color="white" key={index} />;
         })}
         <span> </span>
