@@ -66,6 +66,8 @@
   color: var(--primary)
 }
 
-@media screen {
-  
+@media (max-width: 500px){
+  .selectDb {
+    flex-direction: column;
+  }
 }

@@ -41,3 +41,16 @@
   background: none;
   color: var(--primary)
 }
+
+@media (max-width: 500px){
+  .card {
+    height: 70vh;
+    width: 65vw;
+  }
+}
+
+@media (max-width: 300px){
+  .card {
+    padding: 1.5em;
+  }
+}
